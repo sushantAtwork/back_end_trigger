@@ -25,6 +25,9 @@ jobs:
         run: npm install @octokit/rest node-fetch
 
       - name: Cat File dir
+        run: cd ..
+
+      - name: Cat File dir
         run: ls -la
         
       - name: Run script to update README table
