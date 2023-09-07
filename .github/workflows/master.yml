@@ -30,16 +30,16 @@ jobs:
       - name: Cat File dir
         run: pwd
         
-      - name: Run script to update README table
-        run: |
-          node .github/workflows/update-readme-table.js
+      # - name: Run script to update README table
+      #   run: |
+      #     node .github/workflows/update-readme-table.js
 
       - name: Cd
         run: cd ./github/workflows/
 
       - name: Run script to update README table
         run: |
-          node .github/workflows/update-readme-table.js
+          node update-readme-table.js
 
       - name: Update README
         run: |
