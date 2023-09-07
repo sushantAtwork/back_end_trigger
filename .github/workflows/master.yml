@@ -3,10 +3,10 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - '*'
-  pull_request:
-    branches:
-      - '*'
+      - main
+  # pull_request:
+  #   branches:
+  #     - '*'
       
 jobs:
   update-readme:
@@ -23,29 +23,6 @@ jobs:
         
       - name: Install Dependencies
         run: npm install @octokit/rest node-fetch
-
-      - name: Cat File dir
-        run: ls -la
-
-      - name: Cat File dir
-        run: pwd
-        
-      # - name: Run script to update README table
-      #   run: |
-      #     node .github/workflows/update-readme-table.js
-
-      # - name: Cd
-      #   run: cd .github/workflows/
-
-      # - name: Cat File dir
-      #   run: ls -la
-
-      # - name: Cat File dir
-      #   run: cat .github/workflows/update-readme-table.js
-
-      # - name: Run script to update README table
-      #   run: |
-      #     node update-readme-table.js
 
       - name: Run script to update README table
         run: node .github/workflows/update-readme-table.js
