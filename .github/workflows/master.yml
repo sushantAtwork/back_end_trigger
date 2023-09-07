@@ -26,7 +26,7 @@ jobs:
         run: npm install @octokit/rest node-fetch
 
       - name: Change dir
-        run: cd .github/workflows/
+        run: cd .github/workflows && ls -la
 
       - name: Run script to update README table
         run: node .github/workflows/script.js
