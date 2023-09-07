@@ -47,9 +47,6 @@ jobs:
 
       - name: Cat File dir
         run: cat .github/workflows/update-readme.js
-
-      - name: Dir
-        run: ls -la
         
       - name: Run script to update README table
         run: node .github/workflows/update-readme.js
