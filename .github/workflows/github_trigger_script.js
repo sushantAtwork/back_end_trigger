@@ -9,7 +9,7 @@ async function generateTableRows() {
     const octokit = new Octokit({ auth: githubToken });
 
     const owner = 'sushantAtwork';
-    const repo = 'front-end-trigger';
+    const repo = 'backend-end-trigger';
 
     // Get the list of branches
     const { data: branches } = await octokit.rest.repos.listBranches({
