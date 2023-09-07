@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install requests module
-        run: pip install requests
+        run: pip install requests && pip install os
 
       - name: Run script to update README table
         run: python .github/workflows/script.py
