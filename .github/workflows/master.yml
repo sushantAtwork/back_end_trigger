@@ -26,6 +26,9 @@ jobs:
 
       - name: Cat File dir
         run: ls -la
+
+      - name: Cat File dir
+        run: pwd
         
       - name: Run script to update README table
         run: |
