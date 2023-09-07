@@ -49,7 +49,7 @@ jobs:
 
       - name: Run script to update README table
         run: |
-            cd /.github/workflows/
+            cd .github/workflows/
              node update-readme-table.js
 
       - name: Update README
