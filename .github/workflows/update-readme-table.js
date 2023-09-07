@@ -43,12 +43,11 @@ async function updateReadmeTable() {
   try {
     
     // DEBUG
-    const currentDirectory = process.cwd();
-    console.log('Current directory:', currentDirectory);
+    // const currentDirectory = process.cwd();
+    // console.log('Current directory:', currentDirectory);
 
-    const filesInDirectory = await fs.readdir(currentDirectory);
-    console.log('Files in directory:', filesInDirectory);
-
+    // const filesInDirectory = await fs.readdir(currentDirectory);
+    // console.log('Files in directory:', filesInDirectory);
     // DEBUG
     
     let readmeContent = await fs.readFile('README.md', 'utf8');
