@@ -28,7 +28,6 @@ on:
     branches:
       - '*'
 
-
 jobs:
   update-readme:
     runs-on: ubuntu-latest
@@ -53,21 +52,16 @@ jobs:
 
       - name: Update README
         run: |
-          # Generate dynamic content (e.g., using a script)
           dynamic_content="This content is dynamically generated."
 
-          # Replace the placeholder in README.md with dynamic content
           sed -i "s/{{DYNAMIC_CONTENT}}/$dynamic_content/g" README.md
 
-          # Configure Git user
           git config --global user.name "sushantAtwork"
           git config --global user.email "sushant.raj@netsmartz.net"
 
-          # Add, commit, and push changes
           git add README.md
           git commit -m "Update README table with new branch info"
           git push origin HEAD:main
 
         env:
           GITHUB_TOKEN: ${{ secrets.TEST_REPO }}
-    
