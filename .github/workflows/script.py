@@ -2,7 +2,7 @@ import os
 import requests
 
 # GitHub API credentials (personal access token)
-github_token = os.environ.get('TEST_REPO')
+github_token = os.environ.get(process.env.TEST_REPO)
 
 def generate_table_rows():
     try:
