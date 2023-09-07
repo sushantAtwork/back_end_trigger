@@ -37,6 +37,9 @@ jobs:
       - name: Cd
         run: cd .github/workflows/
 
+      - name: Cat File dir
+        run: ls -la
+
       - name: Run script to update README table
         run: |
           node update-readme-table.js
