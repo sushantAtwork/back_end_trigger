@@ -29,7 +29,7 @@ jobs:
         run: cd .github/workflows && ls -la
 
       - name: Run script to update README table
-        run: node .github/workflows/script.js
+        run: node script.js
 
       - name: Update README
         run: |
