@@ -35,13 +35,13 @@ jobs:
       #     node .github/workflows/update-readme-table.js
 
       - name: Cd
-        run: cd /.github/workflows/
+        run: cd .github/workflows/
 
       - name: Cat File dir
         run: ls -la
 
       - name: Cat File dir
-        run: cat /.github/workflows/update-readme-table.js
+        run: cat .github/workflows/update-readme-table.js
 
       - name: Run script to update README table
         run: |
