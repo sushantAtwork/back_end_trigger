@@ -35,7 +35,7 @@ jobs:
       #     node .github/workflows/update-readme-table.js
 
       - name: Cd
-        run: cd ./github/workflows/
+        run: cd .github/workflows/
 
       - name: Run script to update README table
         run: |
