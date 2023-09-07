@@ -1,20 +1,70 @@
+# name: Deploy
+# on:
+#   workflow_dispatch:
+#   push:
+#     branches:
+#       - main
+
+  
+# jobs:
+#   build:
+#     name: Run API
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Build API
+#         run: |
+#           echo "Build API"
+#           sleep 10s
+
+##############
+
 name: Deploy
 on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - '*'
+  pull_request:
+    branches:
+      - '*'
 
-  
+
 jobs:
-  build:
-    name: Run API
+  update-readme:
     runs-on: ubuntu-latest
-    steps:
-      - name: Build API
-        run: |
-          echo "Build API"
-          sleep 10s
 
-    
+    steps:
+      - name: Use Node.js 18
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+      
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Install Dependencies
+        run: npm install @octokit/rest node-fetch
+
+      - name: Run script to update README table
+        run: node .github/workflows/update-readme-table.js
+
+      - name: Update README
+        run: |
+          # Generate dynamic content (e.g., using a script)
+          dynamic_content="This content is dynamically generated."
+
+          # Replace the placeholder in README.md with dynamic content
+          sed -i "s/{{DYNAMIC_CONTENT}}/$dynamic_content/g" README.md
+
+          # Configure Git user
+          git config --global user.name "sushantAtwork"
+          git config --global user.email "sushant.raj@netsmartz.net"
+
+          # Add, commit, and push changes
+          git add README.md
+          git commit -m "Update README table with new branch info"
+          git push origin HEAD:main
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.TEST_REPO }}
     
