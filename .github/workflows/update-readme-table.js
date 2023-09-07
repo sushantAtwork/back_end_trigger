@@ -1,4 +1,5 @@
 const fs = require('fs').promises;
+const path = require('path');
 const { Octokit } = require('@octokit/rest');
 
 const octokit = new Octokit({
@@ -40,6 +41,16 @@ async function generateTableRows() {
 
 async function updateReadmeTable() {
   try {
+    
+    // DEBUG
+    const currentDirectory = process.cwd();
+    console.log('Current directory:', currentDirectory);
+
+    const filesInDirectory = await fs.readdir(currentDirectory);
+    console.log('Files in directory:', filesInDirectory);
+
+    // DEBUG
+    
     let readmeContent = await fs.readFile('README.md', 'utf8');
     const dynamicRows = await generateTableRows();
     readmeContent = readmeContent.replace('<!-- TABLE_ROWS -->', dynamicRows);
