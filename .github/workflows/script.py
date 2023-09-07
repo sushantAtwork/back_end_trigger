@@ -30,7 +30,7 @@ def generate_table_rows():
 
         return '\n'.join(table_rows)
     except Exception as e:
-        print('Error:', number(e))
+        print('Error:', str(e))  # Changed 'number(e)' to 'str(e)'
         exit(1)
 
 def update_readme_table():
@@ -47,7 +47,7 @@ def update_readme_table():
 
         print('README.md table updated successfully.')
     except Exception as e:
-        print('Error:', number(e))
+        print('Error:', str(e))  # Changed 'number(e)' to 'str(e)'
         exit(1)
 
 update_readme_table()
