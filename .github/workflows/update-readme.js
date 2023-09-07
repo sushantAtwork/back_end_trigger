@@ -58,10 +58,10 @@ const fs = require('fs').promises;
 const { Octokit } = require('@octokit/rest');
 
 // Replace with your GitHub PAT
-const githubToken = 'YOUR_GITHUB_PAT_HERE';
+// const githubToken = 'YOUR_GITHUB_PAT_HERE';
 
 const octokit = new Octokit({
-  auth: process.env.TEST_REPO,,
+  auth: process.env.TEST_REPO,
 });
 
 async function generateTableRows() {
