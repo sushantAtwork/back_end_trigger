@@ -45,11 +45,11 @@ jobs:
       - name: Install Dependencies
         run: npm install @octokit/rest node-fetch
 
-      - name: Check dir
-        run: cd .github/workflows && ls -la
+      # - name: Check dir
+      #   run: cd .github/workflows && ls -la
 
       - name: Run script to update README table
-        run: node .github/workflows/update-readme.js
+        run: node cd .github/workflows/update-readme.js
 
       - name: Update README
         run: |
