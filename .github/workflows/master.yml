@@ -25,10 +25,10 @@ jobs:
         run: npm install @octokit/rest node-fetch
 
       - name: Cat File dir
-        run: cd ..
+        run: ls -la
 
       - name: Cat File dir
-        run: ls -la
+        run: cat README.md
         
       - name: Run script to update README table
         run: node .github/workflows/update-readme-table.js
