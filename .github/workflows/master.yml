@@ -1,7 +1,7 @@
 name: Deploy
 on:
-  # workflow_dispatch:
-  repository_dispatch:
+  workflow_dispatch:
+  # repository_dispatch:
   push:
     branches:
       - main
@@ -12,8 +12,6 @@ on:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
-
-    if: ${{ github.actor == 'sushantAtwork' }}
 
     steps:
 
@@ -28,11 +26,9 @@ jobs:
       - name: Install Dependencies
         run: npm install @octokit/rest node-fetch
 
-      # - name: Change dir
-      #   run: cd .github/workflows && ls -la
-
       - name: Run script to update README table
-        run: node .github/workflows/github_trigger_script.js
+        run: |
+          node .github/workflows/github_trigger_script.js
 
       - name: Update README
         run: |
