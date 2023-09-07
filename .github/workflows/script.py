@@ -23,10 +23,10 @@ def generate_table_rows():
         table_rows.append('|------------|-----|-------------|----------------|')
 
         for branch in branches:
-            table_rows.append(f'| {branch["name"]} | Key | Desc1 | [Link to Branch](https://github.com/sushantAtwork/front-end-trigger/tree/{branch["name"]}) |')
+        table_rows.append(f'| {branch["name"]} | Key | Desc1 | [Link to Branch](https://github.com/sushantAtwork/front-end-trigger/tree/{branch["name"]}) |')
 
         for pr in prs:
-            table_rows.append(f'| PR #{pr["number"]} | Key | {pr["title"]} | [Link to PR]({pr["html_url"]}) |')
+        table_rows.append(f'| PR #{pr["number"]} | Key | {pr["title"]} | [Link to PR]({pr["html_url"]}) |')
 
         return '\n'.join(table_rows)
     except Exception as e:
