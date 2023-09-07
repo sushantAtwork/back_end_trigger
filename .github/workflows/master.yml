@@ -31,7 +31,7 @@ jobs:
         run: cat README.md
         
       - name: Run script to update README table
-        run: node .github/workflows/update-readme-table.js
+        run: cat .github/workflows/update-readme-table.js
 
       - name: Update README
         run: |
