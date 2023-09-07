@@ -1,10 +1,3 @@
-# name: Deploy
-# on:
-#   workflow_dispatch:
-#   push:
-#     branches:
-#       - main
-
 name: Deploy
 on:
   workflow_dispatch:
@@ -14,64 +7,41 @@ on:
   pull_request:
     branches:
       - '*'
-
-  
-jobs:
-  build:
-    name: Run API
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build API
-        run: |
-          echo "Build API"
-          sleep 10s
-
-##############
-
-# name: Deploy
-# on:
-#   workflow_dispatch:
-#   push:
-#     branches:
-#       - '*'
-#   pull_request:
-#     branches:
-#       - '*'
-
-# jobs:
-#   update-readme:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Use Node.js 18
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: 18
       
-#       - name: Checkout code
-#         uses: actions/checkout@v2
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Use Node.js 18
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+      
+      - name: Checkout code
+        uses: actions/checkout@v2
         
-#       - name: Install Dependencies
-#         run: npm install @octokit/rest node-fetch
+      - name: Install Dependencies
+        run: npm install @octokit/rest node-fetch
 
-#       - name: Cat File dir
-#         run: cd .github/workflows/ && ls -la
+      - name: Cat File dir
+        run: cd .github/workflows/ && ls -la
         
-#       - name: Run script to update README table
-#         run: node .github/workflows/update-readme-table.js
+      - name: Run script to update README table
+        run: node .github/workflows/update-readme-table.js
 
-#       - name: Update README
-#         run: |
-#           dynamic_content="This content is dynamically generated."
+      - name: Update README
+        run: |
+          dynamic_content="This content is dynamically generated."
 
-#           sed -i "s/{{DYNAMIC_CONTENT}}/$dynamic_content/g" README.md
+          sed -i "s/{{DYNAMIC_CONTENT}}/$dynamic_content/g" README.md
 
-#           git config --global user.name "sushantAtwork"
-#           git config --global user.email "sushant.raj@netsmartz.net"
+          git config --global user.name "sushantAtwork"
+          git config --global user.email "sushant.raj@netsmartz.net"
 
-#           git add README.md
-#           git commit -m "Update README table with new branch info"
-#           git push origin HEAD:main
+          git add README.md
+          git commit -m "Update README table with new branch info"
+          git push origin HEAD:main
 
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.TEST_REPO }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TEST_REPO }}
