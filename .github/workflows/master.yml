@@ -14,19 +14,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Use Node.js 18
-        uses: actions/setup-node@v2
+      - name: Use Python 3
+        uses: actions/setup-python@v2
         with:
-          node-version: 18
+          python-version: 3.x
       
       - name: Checkout code
         uses: actions/checkout@v2
-        
-      - name: Install Dependencies
-        run: npm install @octokit/rest node-fetch
 
       - name: Run script to update README table
-        run: node .github/workflows/script.js
+        run: python .github/workflows/script.py
 
       - name: Update README
         run: |
