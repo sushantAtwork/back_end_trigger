@@ -26,6 +26,9 @@ jobs:
 
       - name: Cat File dir
         run: cd .github/workflows/ && ls -la
+
+      - name: Cat File dir
+        run: echo pwd
         
       - name: Run script to update README table
         run: node .github/workflows/update-readme-table.js
