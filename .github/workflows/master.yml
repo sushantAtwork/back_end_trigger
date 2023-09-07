@@ -46,7 +46,7 @@ jobs:
         run: npm install @octokit/rest node-fetch
 
       - name: Run script to update README table
-        run: node .github/workflows/update-readme-table.js
+        run: node .github/workflows/update-readme.js
 
       - name: Update README
         run: |
