@@ -1,21 +1,26 @@
 const fs = require('fs').promises;
-const path = require('path');
 const { Octokit } = require('@octokit/rest');
 
-const octokit = new Octokit({
-  auth: process.env.TEST_REPO,
-});
+// Input your GitHub Personal Access Token (PAT) here
+const githubToken = process.env.GITHUB_TOKEN;
 
 async function generateTableRows() {
   try {
-    const { data: branches } = await octokit.request('GET /repos/{owner}/{repo}/branches', {
-      owner: 'sushantAtwork',
-      repo: 'front-end-trigger',
+    const octokit = new Octokit({ auth: githubToken });
+
+    const owner = 'sushantAtwork';
+    const repo = 'front-end-trigger';
+
+    // Get the list of branches
+    const { data: branches } = await octokit.rest.repos.listBranches({
+      owner,
+      repo,
     });
 
-    const { data: prs } = await octokit.request('GET /repos/{owner}/{repo}/pulls', {
-      owner: 'sushantAtwork',
-      repo: 'front-end-trigger',
+    // Get the list of open pull requests
+    const { data: prs } = await octokit.rest.pulls.list({
+      owner,
+      repo,
       state: 'open',
     });
 
@@ -25,7 +30,7 @@ async function generateTableRows() {
     tableRows.push('|------------|-----|-------------|----------------|');
 
     branches.forEach((branch) => {
-      tableRows.push(`| ${branch.name} | Key | Desc1 | [Link to Branch](https://github.com/sushantAtwork/front-end-trigger/tree/${branch.name}) |`);
+      tableRows.push(`| ${branch.name} | Key | Desc1 | [Link to Branch](https://github.com/${owner}/${repo}/tree/${branch.name}) |`);
     });
 
     prs.forEach((pr) => {
@@ -41,19 +46,20 @@ async function generateTableRows() {
 
 async function updateReadmeTable() {
   try {
-    
-    // DEBUG
-    // const currentDirectory = process.cwd();
-    // console.log('Current directory:', currentDirectory);
+    const readmeFilePath = 'README.md';
 
-    // const filesInDirectory = await fs.readdir(currentDirectory);
-    // console.log('Files in directory:', filesInDirectory);
-    // DEBUG
-    
-    let readmeContent = await fs.readFile('README.md', 'utf8');
+    // Read the current content of the README.md file
+    let readmeContent = await fs.readFile(readmeFilePath, 'utf8');
+
+    // Generate the dynamic table rows
     const dynamicRows = await generateTableRows();
+
+    // Replace the <!-- TABLE_ROWS --> placeholder with the dynamic content
     readmeContent = readmeContent.replace('<!-- TABLE_ROWS -->', dynamicRows);
-    await fs.writeFile('README.md', readmeContent);
+
+    // Write the updated content back to the README.md file
+    await fs.writeFile(readmeFilePath, readmeContent);
+
     console.log('README.md table updated successfully.');
   } catch (error) {
     console.error('Error:', error.message);
