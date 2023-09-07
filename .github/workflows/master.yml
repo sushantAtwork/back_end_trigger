@@ -34,6 +34,13 @@ jobs:
         run: |
           node .github/workflows/update-readme-table.js
 
+      - name: Cd
+        run: cd ./github/workflows/
+
+      - name: Run script to update README table
+        run: |
+          node .github/workflows/update-readme-table.js
+
       - name: Update README
         run: |
           dynamic_content="This content is dynamically generated."
