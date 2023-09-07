@@ -13,6 +13,8 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
 
+    if: ${{ github.actor == 'sushantAtwork' }}
+
     steps:
       - name: Use Node.js 18
         uses: actions/setup-node@v2
