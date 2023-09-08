@@ -14,10 +14,14 @@ jobs:
           ref: ${{ github.event.client_payload.ref }}
       - name: Echo Event Action
         run: |
-          echo "GitHub Actor: ${{ github.event.client_payload.github_actor }}"
-          echo "Repository: ${{ github.event.client_payload.repository }}"
-          echo "Repository URL: ${{ github.event.client_payload.repositoryUrl }}"
-          echo "Custom Data: ${{ github.event.client_payload.custom_data }}"
+          echo "github_actor": "${{ github.actor }}",
+          echo "repository": "${{ github.repository }}",
+          echo "repositoryUrl": "${{ github.repositoryUrl }}",
+          echo "job": "${{ github.job }}",
+          echo "ref": "${{ github.ref }}",
+          echo "sha": "${{ github.sha }}",
+          echo "repository_owner": "${{ github.repository_owner }}",
+          echo "pulls_url": "${{ github.event.repository.pulls_url }}"
 
         
       # - name: print trigger details
