@@ -8,15 +8,18 @@ jobs:
     name: Run Workflow
     runs-on: ubuntu-latest
     steps:
-    
       - name: Checkout code
         uses: actions/checkout@v2
-        with: 
-          fetch-depth: 0
-      - name: print trigger details
-        run: |
-          echo ${{ github.event.client.payload.github.action }}
-          echo ${{ github.event.client.payload.github.action }}
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+      - name: Echo Event Action
+        run: echo ${{ github.event.client_payload.github.action }}
+
+        
+      # - name: print trigger details
+      #   run: |
+      #     echo ${{ github.event.client.payload.github.action }}
+      #     echo ${{ github.event.client.payload.github.action }}
         
       # - name: Install Dependencies
       #   run: npm install @octokit/rest node-fetch
