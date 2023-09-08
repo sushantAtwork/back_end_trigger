@@ -13,8 +13,13 @@ jobs:
         with:
           node-version: 18
 
+      # - name: Install Dependencies
+      #   run: npm install @octokit/rest node-fetch
+
       - name: Install Dependencies
-        run: npm install @octokit/rest node-fetch
+        run: |
+         npm install @octokit/rest node-fetch
+         npm install
 
       - name: Checkout code
         uses: actions/checkout@v2
