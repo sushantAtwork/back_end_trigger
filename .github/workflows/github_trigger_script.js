@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const { Octokit } = require('@octokit/rest');
 
 // Input your GitHub Personal Access Token (PAT) here
-const githubToken = secrets.TEST_REPO;
+const githubToken = process.env.TEST_REPO;
 
 async function generateTableRows() {
   try {
