@@ -2,8 +2,7 @@ name: Deploy
 on:
   repository_dispatch:
     types: [my-event]
-
- 
+    
 jobs:
   build:
     name: Run Workflow
