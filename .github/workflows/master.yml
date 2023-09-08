@@ -16,7 +16,7 @@ jobs:
         run: |
           echo ${{ github.event.client_payload.github.action }}
           echo ${{ github.event.client_payload.github.actor }}
-          echo ${{ github.event.client_payload }}
+          echo ${{ github.event.client_payload.github }}
 
         
       # - name: print trigger details
