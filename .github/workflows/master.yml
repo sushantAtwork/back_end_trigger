@@ -13,39 +13,31 @@ jobs:
         with:
           node-version: 18
 
-      - name: Instal
-        run: npm install @octokit/rest
-
       - name: Install Dependencies
         run: npm install @octokit/rest node-fetch
-
 
       - name: Checkout code
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.client_payload.ref }}
+
       - name: Echo Event Action
         run: |
-          echo "github_actor": "${{ github.actor }}",
-          echo "repository": "${{ github.repository }}",
-          echo "repositoryUrl": "${{ github.repositoryUrl }}",
-          echo "job": "${{ github.job }}",
-          echo "ref": "${{ github.ref }}",
-          echo "sha": "${{ github.sha }}",
-          echo "repository_owner": "${{ github.repository_owner }}",
-          echo "pulls_url": "${{ github.event.repository.pulls_url }}"
-
-      - name: print trigger details
-        run: |
-          echo ${{ github.event.client.payload.github.action }}
-          echo ${{ github.event.client.payload.github.action }}
-
-      - name: Check
-        run: ls .github/workflows/
+          echo "github_actor: ${{ github.actor }}"
+          echo "repository: ${{ github.repository }}"
+          echo "repositoryUrl: ${{ github.repositoryUrl }}"
+          echo "job: ${{ github.job }}"
+          echo "ref: ${{ github.ref }}"
+          echo "sha: ${{ github.sha }}"
+          echo "repository_owner: ${{ github.repository_owner }}"
+          echo "pulls_url: ${{ github.event.repository.pulls_url }}"
 
       - name: Run script to update README table
         run: |
           node .github/workflows/github_trigger_script.js
+
+      # Add the remaining steps as needed for your workflow.
+
 
       # - name: Update README
       #   run: |
