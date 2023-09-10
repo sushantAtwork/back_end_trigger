@@ -27,6 +27,9 @@ jobs:
  
       - name: cd
         run: ls -la
+
+      - name: npm
+        run: npm install
      
       - name: Checkout code
         uses: actions/checkout@v2
