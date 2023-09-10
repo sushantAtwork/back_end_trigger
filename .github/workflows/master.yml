@@ -13,13 +13,13 @@ jobs:
         with:
           node-version: 18
 
-      # - name: Install Dependencies
-      #   run: npm install @octokit/rest node-fetch
-
       - name: Install Dependencies
-        run: |
-         npm install @octokit/rest node-fetch
-         npm install
+        run: npm install @octokit/rest node-fetch
+
+      # - name: Install Dependencies
+      #   run: |
+      #    npm install @octokit/rest node-fetch
+      #    npm install
 
       - name: Checkout code
         uses: actions/checkout@v2
@@ -39,26 +39,23 @@ jobs:
 
       - name: Run script to update README table
         run: |
-          node .github/workflows/github_trigger_script.js
+          node scripts/github_trigger_script.js
 
-      # Add the remaining steps as needed for your workflow.
+      - name: Update README
+        run: |
+          dynamic_content="This content is dynamically generated."
 
+          sed -i "s/{{DYNAMIC_CONTENT}}/$dynamic_content/g" README.md
 
-      # - name: Update README
-      #   run: |
-      #     dynamic_content="This content is dynamically generated."
+          git config --global user.name "sushantAtwork"
+          git config --global user.email "sushant.raj@netsmartz.net"
 
-      #     sed -i "s/{{DYNAMIC_CONTENT}}/$dynamic_content/g" README.md
+          git add README.md
+          git commit -m "Update README table with new branch info"
+          git push origin HEAD:main
 
-      #     git config --global user.name "sushantAtwork"
-      #     git config --global user.email "sushant.raj@netsmartz.net"
-
-      #     git add README.md
-      #     git commit -m "Update README table with new branch info"
-      #     git push origin HEAD:main
-
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.TEST_REPO }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TEST_REPO }}
 
 
 
