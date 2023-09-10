@@ -14,6 +14,8 @@ jobs:
         with:
           node-version: 14
 
+      - name: Clear Node.js cache
+        run: npm cache clean --force
 
       
       - name: Checkout code
