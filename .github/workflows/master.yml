@@ -19,6 +19,9 @@ jobs:
       - name: Install Dependencies
         run: npm install @octokit/rest node-fetch
 
+      - name: Npm Install
+        run: npm install
+
       - name: Checkout code
         uses: actions/checkout@v2
         with:
