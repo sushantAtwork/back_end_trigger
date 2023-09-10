@@ -8,6 +8,13 @@ jobs:
     name: Run Workflow
     runs-on: ubuntu-latest
     steps:
+
+      - name: Remove Old
+        run: |
+          rm -rf node_modules
+          rm package-lock.json
+          npm install
+
       - name: Use Node.js 18
         uses: actions/setup-node@v2
         with:
