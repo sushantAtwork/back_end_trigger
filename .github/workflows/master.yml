@@ -14,17 +14,19 @@ jobs:
         with:
           node-version: 14
 
-      - name: cd
-        run: ls -la
+
       
       - name: Checkout code
         uses: actions/checkout@v2
-        
-      # - name: Install Dependencies
-      #   run: npm install @octokit/rest node-fetch
 
+      - name: cd
+        run: ls -la
+        
       - name: Install Dependencies
-        run: npm ci
+        run: npm install @octokit/rest node-fetch
+ 
+      - name: cd
+        run: ls -la
      
       - name: Checkout code
         uses: actions/checkout@v2
