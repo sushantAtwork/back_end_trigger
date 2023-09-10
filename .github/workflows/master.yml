@@ -12,16 +12,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 18
-
-      - name: Install Ocktokit
-        run: npm install @octokit/rest
+      
+      - name: Checkout code
+        uses: actions/checkout@v2
         
       - name: Install Dependencies
         run: npm install @octokit/rest node-fetch
-
-      - name: Npm Install
-        run: npm install
-
+        
       - name: Checkout code
         uses: actions/checkout@v2
         with:
